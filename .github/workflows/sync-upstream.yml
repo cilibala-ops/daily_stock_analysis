@@ -21,13 +21,14 @@ jobs:
     steps:
       - name: 合并上游更新
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.UPSTREAM_SYNC_TOKEN || github.token }}
           TARGET_BRANCH: ${{ github.event.repository.default_branch }}
         shell: bash
         run: |
           set -euo pipefail
           # GitHub 原生同步接口保留本分支提交；冲突时返回非零并停止。
-          # 不检出或执行上游代码，不读取股票分析所用的仓库 Secrets。
+          # 不检出或执行上游代码；专用同步令牌可授权上游 workflow 文件更新。
+          # 未配置专用令牌时使用 GITHUB_TOKEN，workflow 更新可能因权限不足而停止。
           gh api --method POST \
             -H 'Accept: application/vnd.github+json' \
             "repos/${GITHUB_REPOSITORY}/merge-upstream" \
