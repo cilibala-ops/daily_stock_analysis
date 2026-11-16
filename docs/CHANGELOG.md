@@ -9,8 +9,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
-- [新功能] 此 Fork 新增每日北京时间 09:15 自动同步上游工作流，支持手动运行，使用 GitHub 原生合并接口保留独立提交，冲突时停止；补充中英文同步与暂停说明。
-
 - [修复] Docker 构建与启动入口在 ARM64 架构下默认设置 `OPENBLAS_CORETYPE=ARMV8`（保留用户显式覆盖且不影响 x86_64），修复 Apple Silicon Linux 虚拟机因 OpenBLAS SME 指令分发导致 `Illegal instruction (exit code 132)` 崩溃的问题，并补充部署排障说明。
 
 - [修复] 关闭 LiteLLM 逐 chunk 的 streaming success logging（本项目未注册 LiteLLM callback，用量统计不受影响），修复 Windows 上每个流式 chunk 新建事件循环与回环 socketpair、全局线程池卡在 `accept()`，导致 CLI 打印「程序执行完成」后进程不退出且额外占用大量 CPU 的问题。
@@ -2502,3 +2500,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 [1.2.0]: https://github.com/ZhuLinsen/daily_stock_analysis/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/ZhuLinsen/daily_stock_analysis/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/ZhuLinsen/daily_stock_analysis/releases/tag/v1.0.0
+## Fork maintenance / Fork 维护记录
+- [新功能] 此 Fork 新增每日北京时间 09:15 自动同步上游工作流，支持手动运行，使用 GitHub 原生合并接口保留独立提交，冲突时停止；补充中英文同步与暂停说明。
+- [修复] 将本 Fork 的自动同步记录独立放在文件末尾，避免与上游 Unreleased 顶部新增条目发生相同行合并冲突。
