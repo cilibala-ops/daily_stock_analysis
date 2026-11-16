@@ -2511,3 +2511,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 ## Fork maintenance / Fork 维护记录
 - [新功能] 此 Fork 新增每日北京时间 09:15 自动同步上游工作流，支持手动运行，使用 GitHub 原生合并接口保留独立提交，冲突时停止；补充中英文同步与暂停说明。
 - [修复] 将本 Fork 的自动同步记录独立放在文件末尾，避免与上游 Unreleased 顶部新增条目发生相同行合并冲突。
+- [修复] 上游修改工作流文件时允许通过受限的 UPSTREAM_SYNC_TOKEN 完成同步，并说明内置 GITHUB_TOKEN 的权限边界、最小权限和到期维护方式。
